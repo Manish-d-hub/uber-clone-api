@@ -1,0 +1,38 @@
+{
+  "name": "uber-clone",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./prd/connection/dbConnection.js",
+    "dev": "nodemon ./src/connection/dbConnection.js",
+    "build": "babel src --out-dir prd"
+  },
+  "author": "Manish Darmal",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.9",
+    "validator": "^13.7.0",
+    "winston": "^3.7.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "log4js": "^6.4.4",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.2"
+  }
+}
