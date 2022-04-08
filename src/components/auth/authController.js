@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 
-import { logger } from '../../middleware/logger.js';
 import { catchAsync } from '../../utils/catchAsync.js';
 import ExpressError from '../../utils/ExpressError.js';
 import User from '../user/userModel.js';

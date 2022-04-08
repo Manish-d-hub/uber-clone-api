@@ -14,9 +14,16 @@ export const getUsers = catchAsync(async (req, res) => {
 });
 
 export const updateUser = catchAsync(async (req, res) => {
-  const { id } = req.params.id;
+  const { id } = req.user;
   const { email, username } = req.body;
-  const currUser = await User.findByIdAndUpdate(id, { email, username });
+  const currUser = await User.findByIdAndUpdate(
+    id,
+    { email, username },
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
 
   res.status(200).json({
     status: 'success',
@@ -26,5 +33,3 @@ export const updateUser = catchAsync(async (req, res) => {
     },
   });
 });
-
-export const myBookings = catchAsync(async (req, res) => {});

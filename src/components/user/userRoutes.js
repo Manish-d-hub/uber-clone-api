@@ -11,7 +11,7 @@ router.route('/').get(authController.protect, userController.getUsers);
 router.route('/sign-up').post(authController.signUp);
 router.route('/login').post(authController.loginUser);
 router
-  .route('/my-bookings')
-  .get(authController.protect, userController.myBookings);
+  .route('/update-me')
+  .patch(authController.protect, userController.updateUser);
 
 export { router as userRouter };
