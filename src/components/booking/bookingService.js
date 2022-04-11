@@ -1,6 +1,6 @@
-import { logger } from '../../../middleware/logger.js';
-import { catchAsync } from '../../../utils/catchAsync.js';
-import ExpressError from '../../../utils/ExpressError.js';
+import { logger } from '../../middleware/logger.js';
+import { catchAsync } from '../../utils/catchAsync.js';
+import ExpressError from '../../utils/ExpressError.js';
 
 export const bookOne = (Model_1, Model_2) =>
   catchAsync(async (req, res) => {

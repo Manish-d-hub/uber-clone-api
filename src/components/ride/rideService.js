@@ -1,6 +1,6 @@
-import { logger } from '../../../middleware/logger.js';
-import { catchAsync } from '../../../utils/catchAsync.js';
-import ExpressError from '../../../utils/ExpressError.js';
+import { logger } from '../../middleware/logger.js';
+import { catchAsync } from '../../utils/catchAsync.js';
+import ExpressError from '../../utils/ExpressError.js';
 
 export const createNewRide = (Model) =>
   catchAsync(async (req, res) => {
