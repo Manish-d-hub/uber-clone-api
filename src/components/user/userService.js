@@ -1,36 +1,28 @@
+import { logger } from '../../middleware/logger.js';
 import { catchAsync } from '../../utils/catchAsync.js';
+import User from './userModel.js';
+import ExpressError from '../../utils/ExpressError.js';
 
-export const getAll = (Model) =>
-  catchAsync(async (req, res) => {
-    const allUsers = await Model.find();
+export const getAllUsers = async () => {
+  logger.info('Inside getAll service');
+  const allUsers = await User.find();
+  logger.info(allUsers.length);
+  if (allUsers.length < 1)
+    throw new ExpressError("Couldn't find all the users", 404);
 
-    res.status(200).json({
-      status: 'success',
-      results: allUsers.length,
-      data: {
-        data: allUsers,
-      },
+  return allUsers;
+};
+
+export const updateOneUser = async (userId, userObj) => {
+  try {
+    const currUser = await User.findByIdAndUpdate(userId, userObj, {
+      new: true,
+      runValidators: true,
     });
-  });
-
-export const updateOne = (Model) =>
-  catchAsync(async (req, res) => {
-    const { id } = req.user;
-    const { email, username } = req.body;
-    const currUser = await Model.findByIdAndUpdate(
-      id,
-      { email, username },
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
-
-    res.status(200).json({
-      status: 'success',
-      message: 'updated details',
-      data: {
-        currUser,
-      },
-    });
-  });
+    if (!currUser) throw new ExpressError('User not found', 404);
+    return currUser;
+  } catch (error) {
+    logger.error(error);
+    throw new ExpressError(error.message, error.statusCode);
+  }
+};
