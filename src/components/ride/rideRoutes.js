@@ -5,7 +5,7 @@ import * as authController from '../auth/authController.js';
 
 const router = express.Router();
 
-router.post('/create-ride', rideController.createRides);
+router.post('/create-ride', rideController.createRide);
 
 router
   .route('/nearby-rides/:distance/center/:latlng')
