@@ -5,8 +5,10 @@ import { bookRide, getBookings } from './bookingController.js';
 
 const router = Router();
 
-router.route('/book-ride').post(protect, bookRide);
+router.use(protect);
 
-router.route('/my-bookings').get(protect, getBookings);
+router.post('/book-ride', bookRide);
+
+router.get('/my-bookings', getBookings);
 
 export { router as bookingRouter };

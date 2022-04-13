@@ -6,8 +6,6 @@ const router = Router();
 
 router.post('/create-ride', createRide);
 
-router
-  .route('/nearby-rides/:distance/center/:latlng')
-  .get(protect, getNearbyRides);
+router.get('/nearby-rides/:distance/center/:latlng', protect, getNearbyRides);
 
 export { router as rideRouter };
