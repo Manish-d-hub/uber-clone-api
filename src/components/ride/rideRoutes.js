@@ -1,9 +1,9 @@
-import express from 'express';
+import { Router } from 'express';
 
 import * as rideController from './rideController.js';
 import * as authController from '../auth/authController.js';
 
-const router = express.Router();
+const router = Router();
 
 router.post('/create-ride', rideController.createRide);
 
