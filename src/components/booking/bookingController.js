@@ -1,8 +1,5 @@
 import { logger } from '../../middleware/logger.js';
 import { catchAsync } from '../../utils/catchAsync.js';
-import ExpressError from '../../utils/ExpressError.js';
-import Ride from '../ride/rideModel.js';
-import Booking from './bookingModel.js';
 import { bookOneRide, getUserBookings } from './bookingService.js';
 
 export const bookRide = catchAsync(async (req, res) => {
