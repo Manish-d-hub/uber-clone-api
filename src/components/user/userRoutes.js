@@ -6,8 +6,8 @@ import { getUsers, updateUser } from './userController.js';
 const router = Router();
 
 // USER ROUTES
-router.route('/sign-up').post(signUp);
-router.route('/login').post(loginUser);
+router.post('/sign-up', signUp);
+router.post('/login', loginUser);
 
 // Use protect middleware for below routes
 router.use(protect);
