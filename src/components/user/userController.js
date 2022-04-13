@@ -1,7 +1,6 @@
 import { catchAsync } from '../../utils/catchAsync.js';
 import { getAllUsers, updateOneUser } from './userService.js';
 import { logger } from '../../middleware/logger.js';
-import ExpressError from '../../utils/ExpressError.js';
 
 export const getUsers = catchAsync(async (req, res) => {
   logger.info('Inside getUsers controller');

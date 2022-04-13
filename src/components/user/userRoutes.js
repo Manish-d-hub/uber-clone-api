@@ -1,17 +1,15 @@
-import express from 'express';
+import { Router } from 'express';
 
-import * as userController from './userController.js';
-import * as authController from '../auth/authController.js';
+import { loginUser, protect, signUp } from '../auth/authController.js';
+import { getUsers, updateUser } from './userController.js';
 
-const router = express.Router();
+const router = Router();
 
 // USER ROUTES
-router.route('/').get(authController.protect, userController.getUsers);
+router.route('/').get(protect, getUsers);
+router.route('/update-me').patch(protect, updateUser);
 
-router.route('/sign-up').post(authController.signUp);
-router.route('/login').post(authController.loginUser);
-router
-  .route('/update-me')
-  .patch(authController.protect, userController.updateUser);
+router.route('/sign-up').post(signUp);
+router.route('/login').post(loginUser);
 
 export { router as userRouter };
