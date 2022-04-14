@@ -1,16 +1,14 @@
-import express from 'express';
+import { Router } from 'express';
 
-import * as bookingController from './bookingController.js';
-import * as authController from '../auth/authController.js';
+import { protect } from '../auth/authController.js';
+import { bookRide, getBookings } from './bookingController.js';
 
-const router = express.Router();
+const router = Router();
 
-router
-  .route('/book-ride')
-  .post(authController.protect, bookingController.bookRide);
+router.use(protect);
 
-router
-  .route('/my-bookings')
-  .get(authController.protect, bookingController.getBookings);
+router.post('/book-ride', bookRide);
+
+router.get('/my-bookings', getBookings);
 
 export { router as bookingRouter };
