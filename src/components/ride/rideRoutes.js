@@ -1,14 +1,11 @@
-import express from 'express';
+import { Router } from 'express';
+import { protect } from '../auth/authController.js';
+import { createRide, getNearbyRides } from './rideController.js';
 
-import * as rideController from './rideController.js';
-import * as authController from '../auth/authController.js';
+const router = Router();
 
-const router = express.Router();
+router.post('/create-ride', createRide);
 
-router.post('/create-ride', rideController.createRides);
-
-router
-  .route('/nearby-rides/:distance/center/:latlng')
-  .get(authController.protect, rideController.getNearbyRides);
+router.get('/nearby-rides/:distance/center/:latlng', protect, getNearbyRides);
 
 export { router as rideRouter };
